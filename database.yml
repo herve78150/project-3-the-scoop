@@ -1,0 +1,31 @@
+users:
+  user1:
+    username: user1
+    articleIds:
+      - 1
+    commentIds:
+      - 2
+articles:
+  '1':
+    id: 1
+    title: toto
+    url: /toto
+    username: user1
+    commentIds:
+      - 2
+    upvotedBy: []
+    downvotedBy: []
+    comments:
+      - &ref_0
+        id: 2
+        body: ssY
+        username: user1
+        articleId: 1
+        upvotedBy:
+          - user1
+        downvotedBy: []
+nextArticleId: 2
+comments:
+  '1': null
+  '2': *ref_0
+nextCommentId: 3

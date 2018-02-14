@@ -377,10 +377,30 @@ function downVoteComment(url, request){
 
   return response;
 }
+
+function saveDatabase() {
+  const result=yaml.safeDump(database);
+  fs.writeFile("database.yml", result, err => {
+    if (err) throw err;
+  })
+}
+
+function loadDatabase() {
+  try{
+  database= yaml.load(fs.readFileSync("database.yml"));
+  return database;
+  }catch(err){
+    console.log(err);
+    return null
+  }
+}
+
 // Write all code above this line.
 
 const http = require('http');
 const url = require('url');
+const yaml = require('js-yaml');
+const fs = require('fs');
 
 const port = process.env.PORT || 4000;
 const isTestMode = process.env.IS_TEST_MODE;
